@@ -27,9 +27,17 @@ app.get('/historicoIPCA/ano',(req,res)=>{
 app.get('/historicoIPCA/id/:id',(req,res)=>{
         var id = req.params.id;
 
- var result = historicoInflacao.find((index)=> index.id == id );
+    if(id >= 1 && id <= 101){
+        res.json({Erro:"Elemento não encontrado"})
+    }else{
+        
+     var result = historicoInflacao.find((index)=> index.id == id );
 
     res.json({resultado:result})
+
+
+
+    }
 
 })
 
